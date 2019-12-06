@@ -1,5 +1,6 @@
 #include "C_defs.h"
 #include "SDL.h"
+#include "SDL_image.h"
 
 /* Superficies */
 extern SDL_Surface *screen, *msg, *mesa;
@@ -15,9 +16,9 @@ SDL_Surface *load(const char *file);
 SDL_Surface *load(const char *file)
 {
   Uint32 blanco;
-  SDL_Surface *tmp=SDL_LoadBMP(file), *aux;
+  SDL_Surface *tmp=IMG_Load (file), *aux;
   if (tmp == NULL) {
-    fprintf (stderr, "Error al cargar la imagen: mesa.bmp\n%s\n",
+    fprintf (stderr, "Error al cargar la imagen: mesa.png\n%s\n",
              SDL_GetError());
     return NULL;
   }
@@ -40,17 +41,17 @@ void C_elige_jugadores(void *environment, DATA_OBJECT_PTR returnValuePtr)
   SDL_Rect rect;
   int i;
   
-  j[0]=load("seleccion/jugador0.bmp");
-  j[1]=load("seleccion/jugador1.bmp");
-  j[2]=load("seleccion/jugador2.bmp");
-  j[3]=load("seleccion/jugador3.bmp");
+  j[0]=load("seleccion/jugador0.png");
+  j[1]=load("seleccion/jugador1.png");
+  j[2]=load("seleccion/jugador2.png");
+  j[3]=load("seleccion/jugador3.png");
   
-  mano_negro=load("seleccion/mano_negro.bmp");
-  mano_rojo=load("seleccion/mano_rojo.bmp");
-  humano_negro=load("seleccion/humano_negro.bmp");
-  humano_rojo=load("seleccion/humano_rojo.bmp");
-  cpu_negro=load("seleccion/cpu_negro.bmp");
-  cpu_rojo=load("seleccion/cpu_rojo.bmp");
+  mano_negro=load("seleccion/mano_negro.png");
+  mano_rojo=load("seleccion/mano_rojo.png");
+  humano_negro=load("seleccion/humano_negro.png");
+  humano_rojo=load("seleccion/humano_rojo.png");
+  cpu_negro=load("seleccion/cpu_negro.png");
+  cpu_rojo=load("seleccion/cpu_rojo.png");
   
   do {
     rect.x = MSG_X;

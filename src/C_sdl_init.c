@@ -1,6 +1,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include "SDL.h"
+#include "SDL_image.h"
 #include "C_defs.h"
 
 SDL_Surface *screen, *mesa, *msg, *num_fichas;
@@ -66,9 +67,9 @@ static void GenerarFichas()
   Uint32 color;
   SDL_Surface *circulo, *tmp;
   int i, j, f=0;
-  tmp = SDL_LoadBMP ("circulo.bmp");
+  tmp = IMG_Load ("circulo.png");
   if (tmp == NULL) {
-    fprintf (stderr, "Error al cargar la imagen: circulo.bmp\n%s\n",
+    fprintf (stderr, "Error al cargar la imagen: circulo.png\n%s\n",
 	     SDL_GetError());
   }
   circulo = SDL_DisplayFormat (tmp);
@@ -79,36 +80,36 @@ static void GenerarFichas()
     for (j=i; j<7; ++j, ++f) {
       fichas[f].x = i;
       fichas[f].y = j;
-      tmp=SDL_LoadBMP("fichaV.bmp");
+      tmp=IMG_Load("fichaV.png");
       if (tmp == NULL) {
-	fprintf (stderr, "Error al cargar la imagen: fichaV.bmp\n%s\n",
+	fprintf (stderr, "Error al cargar la imagen: fichaV.png\n%s\n",
 		 SDL_GetError());
       }
       fichas[f].bmpV[1] = SDL_DisplayFormat (tmp);
       SDL_FreeSurface(tmp);
       PonerCirculo (circulo, fichas[f].bmpV[1], j, 0);
       PonerCirculo (circulo, fichas[f].bmpV[1], i, 1);
-      tmp=SDL_LoadBMP("fichaV.bmp");
+      tmp=IMG_Load("fichaV.png");
       if (tmp == NULL) {
-	fprintf (stderr, "Error al cargar la imagen: fichaV.bmp\n%s\n",
+	fprintf (stderr, "Error al cargar la imagen: fichaV.png\n%s\n",
 		 SDL_GetError());
       }
       fichas[f].bmpV[0] = SDL_DisplayFormat (tmp);
       SDL_FreeSurface(tmp);
       PonerCirculo (circulo, fichas[f].bmpV[0], i, 0);
       PonerCirculo (circulo, fichas[f].bmpV[0], j, 1);
-      tmp=SDL_LoadBMP("fichaH.bmp");
+      tmp=IMG_Load("fichaH.png");
       if (tmp == NULL) {
-	fprintf (stderr, "Error al cargar la imagen: fichaH.bmp\n%s\n",
+	fprintf (stderr, "Error al cargar la imagen: fichaH.png\n%s\n",
 		 SDL_GetError());
       }
       fichas[f].bmpH[1] = SDL_DisplayFormat (tmp);
       SDL_FreeSurface(tmp);
       PonerCirculo (circulo, fichas[f].bmpH[1], j, 2);
       PonerCirculo (circulo, fichas[f].bmpH[1], i, 3);
-      tmp=SDL_LoadBMP("fichaH.bmp");
+      tmp=IMG_Load("fichaH.png");
       if (tmp == NULL) {
-	fprintf (stderr, "Error al cargar la imagen: fichaH.bmp\n%s\n",
+	fprintf (stderr, "Error al cargar la imagen: fichaH.png\n%s\n",
 		 SDL_GetError());
       }
       fichas[f].bmpH[0] = SDL_DisplayFormat (tmp);
@@ -150,9 +151,9 @@ void C_sdl_init(void *environment)
   head.w = fichaW; head.h = fichaH;
   tail = head;
   tail.x -= fichaH;
-  tmp = SDL_LoadBMP ("mesa.bmp");
+  tmp = IMG_Load ("mesa.png");
   if (tmp == NULL) {
-    fprintf (stderr, "Error al cargar la imagen: mesa.bmp\n%s\n",
+    fprintf (stderr, "Error al cargar la imagen: mesa.png\n%s\n",
 	     SDL_GetError());
   }
   mesa = SDL_DisplayFormat (tmp);

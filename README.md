@@ -20,8 +20,8 @@ $ ./domino
 
 ## Screenshots
 
-![Start game](https://raw.githubusercontent.com/pakozm/domino-clips/master/screenshots/start_game.png)
+![Start game](doc/screenshots/start_game.png)
 
-![In game](https://raw.githubusercontent.com/pakozm/domino-clips/master/screenshots/in_game.png)
+![In game](doc/screenshots/in_game.png)
 
-![Finish game](https://raw.githubusercontent.com/pakozm/domino-clips/master/screenshots/finish_game.png)
+![Finish game](doc/screenshots/finish_game.png)

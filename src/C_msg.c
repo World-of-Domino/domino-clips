@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "SDL.h"
+#include "SDL_image.h"
 #include "C_defs.h"
 
 extern SDL_Surface *msg;
@@ -16,16 +17,16 @@ enum {
 } msg_e;
 
 const char * const msg_str[]={
-"msg_bmp/base.bmp", "msg_bmp/ecolocar.bmp",
-"msg_bmp/eponer.bmp", "msg_bmp/escoge.bmp",
-"msg_bmp/gana0.bmp", "msg_bmp/gana1.bmp",
-"msg_bmp/gana2.bmp", "msg_bmp/gana3.bmp",
-"msg_bmp/nadie_puede_poner_mas_fichas.bmp",
-"msg_bmp/pasa0.bmp", "msg_bmp/pasa1.bmp",
-"msg_bmp/pasa2.bmp", "msg_bmp/pasa3.bmp",
-"msg_bmp/tipojugador.bmp",
-"msg_bmp/turno0.bmp", "msg_bmp/turno1.bmp",
-"msg_bmp/turno2.bmp", "msg_bmp/turno3.bmp"
+"msg_bmp/base.png", "msg_bmp/ecolocar.png",
+"msg_bmp/eponer.png", "msg_bmp/escoge.png",
+"msg_bmp/gana0.png", "msg_bmp/gana1.png",
+"msg_bmp/gana2.png", "msg_bmp/gana3.png",
+"msg_bmp/nadie_puede_poner_mas_fichas.png",
+"msg_bmp/pasa0.png", "msg_bmp/pasa1.png",
+"msg_bmp/pasa2.png", "msg_bmp/pasa3.png",
+"msg_bmp/tipojugador.png",
+"msg_bmp/turno0.png", "msg_bmp/turno1.png",
+"msg_bmp/turno2.png", "msg_bmp/turno3.png"
 };
 
 void C_msg(void *environment)
@@ -39,7 +40,7 @@ void C_msg(void *environment)
   if (EnvRtnArgCount(environment)>1)
     msg_time=EnvRtnLong(environment, 2);
   else msg_time=-1;
-  tmp=SDL_LoadBMP(msg_str[m]);
+  tmp=IMG_Load (msg_str[m]);
   if (tmp == NULL) {
     fprintf (stderr, "Error al cargar la imagen: %s\n%s\n", msg_str[m],
 	     SDL_GetError());
